@@ -20,7 +20,8 @@ router.get('/getInfo/:id',async(req,res)=>{
 });
 
 router.post('/add',async(req,res)=>{
-  const task = new schemaTask(req.body);
+  const { title, description } = req.body;
+  const task = new schemaTask({title, description});
   const rs = await task.save();
   res.json(rs);
 });
